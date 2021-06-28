@@ -5,7 +5,7 @@ class Despesa {
         this.dia = dia
         this.tipo = tipo
         this.descricao = descricao
-        this.valor = valor
+        this.valor = parseFloat(valor).toFixed(2)
     }
 
     validarDespesa() {
@@ -178,7 +178,9 @@ function carregarListaDespesas(despesas = Array(), filtro = false) {
 
         linha.insertCell(2).innerHTML = `${d.descricao}`
 
-        linha.insertCell(3).innerHTML = `${d.valor}`
+        d.valor = parseFloat(d.valor).toFixed(2)
+
+        linha.insertCell(3).innerHTML = `R$${d.valor}`
 
         let btn = document.createElement('button')
         btn.className = 'btn btn-danger'
